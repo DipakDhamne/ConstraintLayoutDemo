@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.hnweb.hnwebtest.model.Response" />
+
+         <variable
+             name="itemClickListener"
+             type="com.hnweb.hnwebtest.adapter.ListEventAdapter" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        card_view:cardBackgroundColor="@color/colorWhite"
+        card_view:cardCornerRadius="10dp"
+        card_view:cardElevation="5dp"
+        card_view:cardUseCompatPadding="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/parentLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/ivImg"
+                android:layout_width="100dp"
+                android:layout_height="0dp"
+                android:scaleType="centerCrop"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:loadImage="@{model.eventFlyer}"/>
+
+            <ImageView
+                android:id="@+id/ivStar"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_margin="10dp"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:loadImage="@{model.color}"/>
+
+            <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:padding="5dp"
+                android:singleLine="true"
+                android:text="@{model.eventName}"
+                android:textColor="@color/colorBlack"
+                android:textSize="18sp"
+                app:layout_constraintLeft_toRightOf="@+id/ivImg"
+                app:layout_constraintRight_toLeftOf="@+id/ivStar"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvDesc"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:padding="5dp"
+                android:singleLine="true"
+                android:text="@{model.description}"
+                android:textColor="@color/colorBlack"
+                android:textSize="14sp"
+                app:layout_constraintLeft_toRightOf="@+id/ivImg"
+                app:layout_constraintRight_toLeftOf="@+id/ivStar"
+                app:layout_constraintTop_toBottomOf="@id/tvTitle" />
+
+            <TextView
+                android:id="@+id/tvVenuCpt"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:padding="5dp"
+                android:text="Venue : "
+                android:textColor="@color/colorBlack"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toTopOf="@+id/tvAdr"
+                app:layout_constraintLeft_toRightOf="@+id/ivImg"
+                app:layout_constraintTop_toBottomOf="@+id/tvDesc" />
+
+            <TextView
+                android:id="@+id/tvVenu"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:maxLines="2"
+                android:padding="5dp"
+                android:text="@{model.eventVenue}"
+                android:textColor="@color/colorBlack"
+                android:textSize="14sp"
+                app:layout_constraintLeft_toRightOf="@+id/tvVenuCpt"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvDesc" />
+
+            <TextView
+                android:id="@+id/tvAdr"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text="@{model.address}"
+                android:textColor="@color/colorBlack"
+                android:textSize="14sp"
+                app:layout_constraintLeft_toRightOf="@+id/ivImg"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvVenu" />
+
+            <TextView
+                android:id="@+id/tvDateCpt"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:padding="5dp"
+                android:text="Date : "
+                android:textColor="@color/colorBlack"
+                android:textSize="14sp"
+                app:layout_constraintLeft_toRightOf="@+id/ivImg"
+                app:layout_constraintTop_toBottomOf="@+id/tvAdr" />
+
+            <TextView
+                android:id="@+id/tvDate"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:maxLines="2"
+                android:padding="5dp"
+                android:text="@{model.startDate}"
+                android:textColor="@color/colorBlack"
+                android:textSize="14sp"
+                app:layout_constraintLeft_toRightOf="@+id/tvDateCpt"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvAdr" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</layout>
