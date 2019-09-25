@@ -6,6 +6,8 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -20,6 +22,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private GoogleMap mMap;
     private Double lat, longi;
     private String venu;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +39,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
+        ((TextView)findViewById(R.id.tvTitle)).setText(getIntent().getExtras().getString("title"));
+        ((ImageView)findViewById(R.id.ivBack)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
 
     }

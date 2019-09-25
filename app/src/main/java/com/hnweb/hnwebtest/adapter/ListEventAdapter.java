@@ -54,6 +54,7 @@ public class ListEventAdapter extends RecyclerView.Adapter<ListEventAdapter.List
                 intent.putExtra("lat", item.getLat());
                 intent.putExtra("long", item.getLong1());
                 intent.putExtra("venu", item.getEventVenue());
+                intent.putExtra("title", item.getEventName());
                 context.startActivity(intent);
 
             }
